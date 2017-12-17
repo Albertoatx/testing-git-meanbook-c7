@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+	<base href="/">
+</head>
+<body>
+	<mean-app>
+		<h1>Loading...</h1>
+	</mean-app>
+	
+	<script type="text/javascript">
+		window.user = <%- user || 'null' %>;
+	</script>
+	
+	<!-- load external dependencies -->
+	<script src="lib/core-js/client/shim.min.js"></script>  <!-- Adds ES6 features to browsers that don't have them -->
+	<script src="lib/zone.js/dist/zone.js"></script>	    <!-- An execution context. Helps with change detection and showing errors -->
+	<script src="lib/reflect-metadata/Reflect.js"></script> <!-- Polyfill used to apply decorators to our code -->
+	<script src="lib/systemjs/dist/system.js"></script>     <!-- A loader: some browsers don't support loading packages using an ES6 import -->
+	<script src="systemjs.config.js"></script>              <!-- ESTE FICHERO FALTABA!!! Lo he creado yo -->
+
+	<!-- Load our Angular2 app using SystemJS -->	
+	<script>
+		System.import('app').catch(function(err){ console.error(err); }); //'app' is a property in object 'packages' inside "systemjs.config.js"
+	</script>
+</body>
+</html>
